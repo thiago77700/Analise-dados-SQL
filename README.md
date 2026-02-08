@@ -50,4 +50,4 @@ As consultas desenvolvidas permitem que a empresa saia do "achismo" e tome decis
 
 ---
 **Desenvolvido por:** [Luis thiago da silva Xavier]  
-[LinkedIn](www.linkedin.com/in/luis-thiago-da-silva-xavier-a684303aa) | [📧 Envie um e-mail](mailto:luiz.tiagosilva200@gmail.com)
+[LinkedIn: www.linkedin.com/in/luis-thiago-da-silva-xavier-a684303aa] | [📧 Envie um e-mail: luiz.tiagosilva200@gmail.com]
