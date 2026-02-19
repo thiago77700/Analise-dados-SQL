@@ -1,53 +1,172 @@
-# 📊 Data Insights: Performance de Vendas e Comportamento do Cliente
+# 📊 Projeto de Análise de Dados – Vendas no Varejo
+
+---
+
+## 📌 Principais Resultados
+
+- **Faturamento total:** $456.000  
+- **Ticket médio:** $456  
+- **Categoria líder:** Electronics (34,41%)  
+- **Maior volume:** Clothing  
+
+---
 
 ## 🎯 Objetivo do Projeto
-Este projeto utiliza SQL para realizar uma análise diagnóstica de uma operação de E-commerce. O foco foi transformar registros brutos em indicadores de desempenho (KPIs) para otimização de estoque, estratégia de marketing e saneamento de base de dados.
+
+Este projeto tem como objetivo analisar dados de vendas de uma empresa do setor varejista, transformando dados brutos em **insights estratégicos para tomada de decisão**.
+
+As análises buscaram responder:
+
+- Qual o faturamento total?
+- Qual o ticket médio?
+- Qual categoria é mais rentável?
+- Qual categoria vende mais?
+- Como está distribuída a receita?
+- Volume alto significa maior rentabilidade?
 
 ---
 
-##  Stack Técnica
-* **Banco de Dados:** MySQL
-* **Principais Comandos:** `INNER JOIN`, `GROUP BY`, `ORDER BY` e Funções de Agregação (`SUM`, `AVG`, `COUNT`).
+## 🗂️ Estrutura do Projeto
+
+
+
+## 🗂️ Estrutura do Projeto
+
+📁 /sql → Queries utilizadas nas análises
+📁 /excel → Tabelas dinâmicas e análises exploratórias
+📁 /dashboard → Visualização no Power BI
+📄 README.md → Documentação do projeto
+
 
 ---
 
-## 📈 Análise Detalhada (Insights)
+# 🗄️ Parte 1 – Análise em SQL
 
-### 1. Saneamento e Qualidade da Base
-Antes de qualquer análise financeira, validei a integridade da base.
-![Qualidade de Dados]<img width="855" height="189" alt="Image" src="https://github.com/user-attachments/assets/d891ca46-1af2-405f-b607-3fd36afdbc08" />
-* **Insight:** Identifiquei clientes com campos de contato (telefone) nulos. Isso impacta diretamente em campanhas de retenção (CRM). Manter esses dados limpos economiza recursos em disparos de marketing ineficientes.
+## 🔎 1. Validação da Base
 
-### 2. Visão 360° da Operação
-Monitoramento constante das três entidades principais:
-<p align="center">
-  
-  <img width="1124" height="483" alt="Image" src="https://github.com/user-attachments/assets/21bcce4e-5e57-4538-abe8-3fe48141396e" />
-<img width="1035" height="423" alt="Image" src="https://github.com/user-attachments/assets/c42fc241-f748-4850-8510-e84c75df939c" />
- <img width="1050" height="499" alt="Image" src="https://github.com/user-attachments/assets/690c26fd-9b21-45ea-8890-7b92e741074c" />
-</p>
-* **Insight:** A organização tabular permite rastrear desde o perfil sociodemográfico do cliente até o custo unitário de cada produto, garantindo que a margem de lucro seja monitorada em tempo real.
+```sql
+SELECT COUNT(*) 
+FROM base;
 
-### 3. Performance de Faturamento por Marca
-Utilizei `INNER JOIN` para cruzar vendas com o catálogo de produtos.
-![Receita por Marca]<img width="537" height="354" alt="Image" src="https://github.com/user-attachments/assets/57e53e7f-918e-4f7d-90bf-a3720d68f898" />
-* **Insight:** O gráfico de resultados revela quais marcas dominam o faturamento. Note que marcas como **SONY** apresentam um volume financeiro significativamente superior, o que sugere uma priorização em negociações com fornecedores ou destaque em vitrines digitais.
+💰 2. Faturamento Total
 
-### 4. Inteligência de Catálogo e Precificação
-Aplicação de métricas estatísticas sobre o portfólio de produtos.
-![Métricas de Preço]<img width="896" height="348" alt="Image" src="https://github.com/user-attachments/assets/e2f40d9c-2c02-4239-b61b-fa193e6b5e0d" />
-* **Insight:** Com o `AVG` (Média), identificamos o ticket médio do catálogo (~1.788). Saber que o produto mais barato custa 280 e o mais caro 4.200 ajuda a definir a faixa de público-alvo (Classe A/B) e a criar estratégias de "upselling".
+SELECT SUM(`Total Amount`) AS faturamento_total 
+FROM base;
+✔ Faturamento total: $456.000,00
 
-### 5. Segmentação de Público Ativo
-Análise volumétrica por gênero.
-![Vendas por Gênero]<img width="515" height="263" alt="Image" src="https://github.com/user-attachments/assets/e53b34cb-0a47-448d-9d88-d1260dcb2326" />
-* **Insight:** A base está equilibrada, com uma leve predominância feminina (52%). Esse dado é crucial para o time de redação e design criar comunicações visualmente alinhadas à maioria do público.
+📅 3. Faturamento Mensal
+
+SELECT 
+    DATE_FORMAT(`Date`, '%Y-%m') AS mes, 
+    SUM(`Total Amount`) AS faturamento_mensal 
+FROM base 
+GROUP BY mes 
+ORDER BY mes;
+
+✔ Análise de evolução temporal do faturamento.
+
+🏆 4. Faturamento por Categoria
+
+SELECT 
+    `Product Category` AS categoria, 
+    SUM(`Total Amount`) AS faturamento 
+FROM base 
+GROUP BY `Product Category` 
+ORDER BY faturamento DESC;
+
+Categoria	Faturamento
+Electronics	$156.905,00
+Clothing	 $155.580,00
+Beauty	   $143.515,00
+Total Geral	$456.000,00
+
+✔ Electronics lidera o faturamento.
+
+👤 5. Ticket Médio por Cliente
+SELECT 
+    `Customer ID`, 
+    SUM(`Total Amount`) AS total_cliente 
+FROM base 
+GROUP BY `Customer ID`;
+
+📉 6. Análise de Variação (Função de Janela)
+
+SELECT 
+    mes,
+    faturamento,
+    faturamento - LAG(faturamento) OVER (ORDER BY mes) AS variacao
+FROM (
+    SELECT 
+        DATE_FORMAT(`Date`, '%Y-%m') AS mes,
+        SUM(`Total Amount`) AS faturamento
+    FROM base
+    GROUP BY mes
+) t;
+
+✔ Uso de função de janela (LAG) para identificar crescimento ou queda mensal.
+
+📊 Parte 2 – Análise em Excel (Tabelas Dinâmicas)
+💰 Ticket Médio por Categoria
+Categoria Faturamento	   Ticket Médio
+Beauty	   $143.515,00	    $467,48
+Clothing	 $155.580,00   	$443,25
+Electronics	 $156.905,00	$458,79
+Total Geral	 $456.000,00	$456,00
+
+🔎 Insight:
+Beauty apresenta o maior ticket médio.
+
+🛒 Quantidade de Vendas por Categoria
+Categoria	Nº Transações
+Beauty	      307
+Clothing	    351
+Electronics  	342
+Total Geral	  1.000
+
+🔎 Insight:
+Clothing possui maior volume de vendas.
+
+📊 Participação no Faturamento (%)
+Categoria	  Participação
+Beauty	      31,47%
+Clothing	    34,12%
+Electronics	   34,41%
+Total Geral	    100%
+
+🔎 Insight:
+Electronics representa aproximadamente 34% do faturamento.
+
+🔄 Análise de Mix (Volume x Rentabilidade)
+Categoria	   Quantidade Vendida	        Ticket Médio
+Beauty	           307	                 $467,48
+Clothing        	 351	                 $443,25
+Electronics        342	                 $458,79
+Total Geral     	 1000	                 $456,00
+
+🎯 Insight:
+
+Clothing possui maior volume
+
+Beauty possui maior ticket médio
+
+Electronics equilibra volume e rentabilidade
+
+➡ Categoria com maior volume nem sempre é a mais rentável.
+
+---
+# 🎥 Demonstração do Projeto
+
+Vídeo demonstrando a navegação pelo dashboard desenvolvido no Power BI.
+
+🔗 Assista no YouTube:  
+https://youtu.be/F8_ZbqfIAtQ
 
 ---
 
-## 🚀 Conclusão
-As consultas desenvolvidas permitem que a empresa saia do "achismo" e tome decisões baseadas em dados reais. A automação desses scripts pode gerar dashboards diários de performance e saúde do negócio.
+# 📬 Contato
 
----
-**Desenvolvido por:** [Luis thiago da silva Xavier]  
-[LinkedIn: www.linkedin.com/in/luis-thiago-da-silva-xavier-a684303aa] | [📧 Envie um e-mail: luiz.tiagosilva200@gmail.com]
+🔗 **LinkedIn:**  
+[Luís Thiago da Silva Xavier](https://www.linkedin.com/in/luis-thiago-da-silva-xavier-a684303aa)
+
+📧 Email:luiz.tiagosilva700@gmail.com
+
