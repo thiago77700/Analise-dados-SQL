@@ -36,7 +36,13 @@ O dashboard interativo permite filtrar por categoria, faixa etária, região e p
   - Gráfico de pizza: Distribuição de vendas por produto  
   - Tabelas dinâmicas: Comparativo de volume x ticket médio  
 
- 
+ ## 💡 Soluções Recomendadas
+
+- **Upsell em produtos premium**: aumentar ticket médio focando em Eletrônicos de maior valor.  
+- **Promoções estratégicas em Roupas**: aumentar receita sem reduzir ticket médio.  
+- **Marketing para público 25–34 anos**: campanhas direcionadas para engajamento e vendas.  
+- **Otimização de estoque**: ajustar reposição entre Eletrônicos e Roupas para evitar ruptura.  
+- **Monitoramento contínuo**: usar dashboards interativos para ajustar estratégias em tempo real.
 
 📂 **screenshot Dashbord:** <img width="845" height="465" alt="Image" src="https://github.com/user-attachments/assets/4da0f07b-9fcd-4c6b-8f20-4d0a12e27497" />
 
