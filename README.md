@@ -4,7 +4,7 @@
 ![SQL Badge](https://img.shields.io/badge/Queries-MySQL-green)
 
 ## 📝 Sobre o Projeto
-Este projeto analisou dados de vendas do varejo, transformando **informações brutas em insights estratégicos**. O foco está em métricas de faturamento, ticket médio, volume de vendas e comportamento dos clientes, para apoiar **decisões baseadas em dados**.
+Este projeto analisei dados de vendas do varejo, transformando **informações brutas em insights estratégicos**. O foco está em métricas de faturamento, ticket médio, volume de vendas e comportamento dos clientes, para apoiar **decisões baseadas em dados**.
 
 ---
 
