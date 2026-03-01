@@ -26,7 +26,13 @@ Este projeto analisei dados de vendas do varejo, transformando **informações b
 
 > **Insight Estratégico:** Electronics gera maior faturamento, mas Clothing movimenta mais unidades. Estratégia: **upsell em Electronics e promoções em Clothing**.
 
----
+---📌 Antes da Análise x Depois da Análise
+
+📉 Antes da análise
+As decisões comerciais eram tomadas sem clareza sobre quais categorias impulsionavam o faturamento e quais produtos tinham maior impacto no volume de vendas. Não havia uma visão consolidada sobre o comportamento dos clientes por faixa etária, dificultando ações direcionadas de marketing, estoque e precificação.
+
+📈 Depois da análise
+Com a consolidação dos dados e a criação do dashboard interativo no Power BI, foi possível identificar que a categoria Electronics lidera o faturamento, enquanto Clothing apresenta maior volume de vendas. A partir disso, foram propostas estratégias práticas, como ações de upsell em Electronics, promoções estratégicas em Clothing e campanhas focadas no público de 25 a 34 anos, além de orientar melhor a gestão de estoque e o planejamento comercial.
 
 ## 📈 Dashboards e Visualizações
 O dashboard interativo permite filtrar por categoria, faixa etária, região e período, facilitando a **análise de tendências**.
