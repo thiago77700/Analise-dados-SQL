@@ -4,7 +4,7 @@
 ![SQL Badge](https://img.shields.io/badge/Queries-MySQL-green)
 
 ## 📝 Sobre o Projeto
-Este projeto analisei dados de vendas do varejo, transformando **informações brutas em insights estratégicos**. O foco está em métricas de faturamento, ticket médio, volume de vendas e comportamento dos clientes, para apoiar **decisões baseadas em dados**.
+Neste projeto analisei dados de vendas do varejo, transformando **informações brutas em insights estratégicos**. O foco está em métricas de faturamento, ticket médio, volume de vendas e comportamento dos clientes, para apoiar **decisões baseadas em dados**.
 
 ---
 
@@ -26,7 +26,9 @@ Este projeto analisei dados de vendas do varejo, transformando **informações b
 
 > **Insight Estratégico:** Electronics gera maior faturamento, mas Clothing movimenta mais unidades. Estratégia: **upsell em Electronics e promoções em Clothing**.
 
----📌 Antes da Análise x Depois da Análise
+---
+
+📌 Antes da Análise x Depois da Análise
 
 📉 Antes da análise
 As decisões comerciais eram tomadas sem clareza sobre quais categorias impulsionavam o faturamento e quais produtos tinham maior impacto no volume de vendas. Não havia uma visão consolidada sobre o comportamento dos clientes por faixa etária, dificultando ações direcionadas de marketing, estoque e precificação.
