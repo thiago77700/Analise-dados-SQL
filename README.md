@@ -52,7 +52,7 @@ O dashboard interativo permite filtrar por categoria, faixa etária, região e p
 - **Otimização de estoque**: ajustar reposição entre Eletrônicos e Roupas para evitar ruptura.  
 - **Monitoramento contínuo**: usar dashboards interativos para ajustar estratégias em tempo real.
 
-📂 **link do dashbord YT:** (https://youtu.be/F8_ZbqfIAtQ)
+📂 **link do dashbord YT:** https://youtu.be/AcEFiqBowwc
 
 
 📂 **Excel com Tabelas Dinâmicas:** [📄 Arquivo Excel no OneDrive](https://1drv.ms/x/c/5F68A0C1FD914573/IQDdZFcCMdgWRIGDMNhE2tF1AXpHbVl1nUBz9iJGS9TFr0Y?e=BLhZHR)  
